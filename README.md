@@ -119,7 +119,6 @@ type `magic` terminal to check whether it installed succesfully or not. Type `ex
 
 
 # Temperature Sensor Generator Circuit
--------
 This generator creates a compact mixed-signal temperature sensor based on the topology from this [paper](https://ieeexplore.ieee.org/document/9816083).
 
 It consists of a ring oscillator whose frequency is controlled by the voltage drop over a MOSFET operating in subthreshold regime, where its dependency on temperature is exponential.
