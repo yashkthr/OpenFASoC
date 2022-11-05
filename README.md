@@ -132,23 +132,8 @@ The physical implementation of the analog blocks in the circuit is done using tw
 2. SLC cell, containing the Split-Control Level Converter.
 
 The gds and lef files of HEADER and SLC cells are pre-created before the start of the Generator flow.
-The layout of the HEADER cell is shown below:
-
-<p align="center">
-  <img src="/images/of1.png">
-</p><br>
-
-The layout of the SLC cell is shown below:
-
-<p align="center">
-  <img src="/images/of2.png">
-</p><br>
 
 # OpenFASOC Flow
-<p align="center">
-  <img src="/images/of3.png">
-</p><br>
-
 The generator must first parse the user’s requirements into a high-level circuit description or verilog. User input parsing is implemented by reading from a JSON spec file directly in the temp-sense-gen repository. The JSON allows for specifying power, area, maximum error (temperature result accuracy),
 an optimization option (to choose which option to prioritize), and an operating temperature range (minimum and maximum operating temperature values).
 The operating temperature range and optimization must be specified, but other items can be left blank. 
