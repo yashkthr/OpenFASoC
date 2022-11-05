@@ -116,3 +116,44 @@ sudo make
 sudo make install
 ```
 type `magic` terminal to check whether it installed succesfully or not. Type `exit` to exit magic.
+
+
+# Temperature Sensor Generator Circuit
+-------
+This generator creates a compact mixed-signal temperature sensor based on the topology from this [paper](https://ieeexplore.ieee.org/document/9816083).
+
+It consists of a ring oscillator whose frequency is controlled by the voltage drop over a MOSFET operating in subthreshold regime, where its dependency on temperature is exponential.
+
+![tempsense_ckt](https://user-images.githubusercontent.com/110079631/199317479-67f157c5-6934-470b-8552-5451b1361b9c.png)
+
+  Block diagram of the temperature sensor’s circuit
+
+The physical implementation of the analog blocks in the circuit is done using two manually designed standard cells:
+1. HEADER cell, containing the transistors in subthreshold operation;
+2. SLC cell, containing the Split-Control Level Converter.
+
+The gds and lef files of HEADER and SLC cells are pre-created before the start of the Generator flow.
+The layout of the HEADER cell is shown below:
+
+<p align="center">
+  <img src="/images/of1.png">
+</p><br>
+
+The layout of the SLC cell is shown below:
+
+<p align="center">
+  <img src="/images/of2.png">
+</p><br>
+
+# OpenFASOC Flow
+<p align="center">
+  <img src="/images/of3.png">
+</p><br>
+
+The generator must first parse the user’s requirements into a high-level circuit description or verilog. User input parsing is implemented by reading from a JSON spec file directly in the temp-sense-gen repository. The JSON allows for specifying power, area, maximum error (temperature result accuracy),
+an optimization option (to choose which option to prioritize), and an operating temperature range (minimum and maximum operating temperature values).
+The operating temperature range and optimization must be specified, but other items can be left blank. 
+
+
+The generator uses this model file to automatically determine the number of headers and inverters, among other necessary modifications that can be made to meet spec. The generator references the model file in an iterative process until either meeting spec or failing. A verilog description is then
+produced by substituting specifics into several template verilog files.
