@@ -134,6 +134,8 @@ The physical implementation of the analog blocks in the circuit is done using tw
 The gds and lef files of HEADER and SLC cells are pre-created before the start of the Generator flow.
 
 # OpenFASOC Flow
+![flow](https://user-images.githubusercontent.com/69398841/200112750-d7543e4f-1eaa-42c7-b1bb-14db4e9eaa33.png)
+
 The generator must first parse the user’s requirements into a high-level circuit description or verilog. User input parsing is implemented by reading from a JSON spec file directly in the temp-sense-gen repository. The JSON allows for specifying power, area, maximum error (temperature result accuracy),
 an optimization option (to choose which option to prioritize), and an operating temperature range (minimum and maximum operating temperature values).
 The operating temperature range and optimization must be specified, but other items can be left blank. 
