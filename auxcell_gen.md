@@ -123,27 +123,16 @@ schematic2layout.py <NETLIST_DIR> -p <PDK_DIR>/
 
 ## Generated .lef and .gds
 
-### CP GDS
-
-<p align="center">   
-  <img src="images/1.png">
-</p><br>   
-
-<p align="center">   
-  <img src="images/2.png">
-</p><br>   
+### CP GDS 
 
 ![Screenshot from 2022-12-14 23-31-07](https://user-images.githubusercontent.com/69398841/207777789-1a96cbfa-04a7-43fc-a5d9-dfa31fade1e2.png)
 
 ![Screenshot from 2022-12-15 10-35-11](https://user-images.githubusercontent.com/69398841/207777832-e5728334-9298-43a1-afcb-abef67781fdf.png)
 
 
-### VCO LEF
+### CP LEF
 
-<p align="center">   
-  <img src="images/3.png">
-</p><br>   
-
+![image](https://user-images.githubusercontent.com/69398841/207779153-b4774c2a-c861-41bc-ae7e-1fe8df562a35.png)
 
 ## Acknowledgement
   
