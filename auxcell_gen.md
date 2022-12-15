@@ -117,12 +117,9 @@ schematic2layout.py <NETLIST_DIR> -p <PDK_DIR>/
 
 ## FLOW    
 
-<p align="center">   
-  <img src="images/Screenshot%20from%202022-12-15%2001-28-59.png">
-</p><br>   
+![image](https://user-images.githubusercontent.com/69398841/207779636-2ee480a4-7caa-4d81-be49-8ecbddbd7cce.png)
 
 ## Generated .lef and .gds
-
 ### CP GDS 
 
 ![Screenshot from 2022-12-14 23-31-07](https://user-images.githubusercontent.com/69398841/207777789-1a96cbfa-04a7-43fc-a5d9-dfa31fade1e2.png)
