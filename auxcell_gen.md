@@ -9,7 +9,7 @@ Phase Lock Loop (PLL) is a system that consists of three major parts; Phase Freq
 The charge pump circuit is connected with loop filter and located within PFD and VCO. Charge pump is functioning as a converter for the logic states of the PFD into an analog signal in order to control the VCO. The frequency of the VCO is controlled by the output signal of the charge pump circuit. The output voltage of the charge pump circuit must be held at a constant voltage, when PLL locks in some frequency. The charge pump consists of two switched current source that pump charge in or out of the
 loop filter according to two logical inputs.
 
-![CP](https://user-images.githubusercontent.com/110079763/206902465-51f3c27a-219a-4a0c-b768-72321d4f9ed4.png)
+![CP](https://user-images.githubusercontent.com/69398841/207801762-5e3db6ef-3a33-42e0-91b9-8edea34b025c.jpg)
 
 ## Phase frequency detector
 ![PFD](https://user-images.githubusercontent.com/110079763/206902472-fdc42b56-e77f-4ea3-8196-719e90638ee0.png)
