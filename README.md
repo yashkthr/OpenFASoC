@@ -143,3 +143,85 @@ The operating temperature range and optimization must be specified, but other it
 
 The generator uses this model file to automatically determine the number of headers and inverters, among other necessary modifications that can be made to meet spec. The generator references the model file in an iterative process until either meeting spec or failing. A verilog description is then
 produced by substituting specifics into several template verilog files.
+
+The steps from the RTL-to-GDS flow look like this, usual in a digital flow:
+
+![1tempsense_digflow_diagram](https://user-images.githubusercontent.com/69398841/207781519-f85d14ef-7ee0-4759-a145-c047b6a892b1.png)
+
+![2tempsense_flow_diagram](https://user-images.githubusercontent.com/69398841/207781535-15118d6c-d1df-46ce-b109-81205bad1a60.png)
+
+```   
+temp-sense-gen
+├── blocks
+└── flow
+    └── design
+        ├── sky130hd
+        │   └── tempsense
+        │       ├── config.mk             <--
+        │       └── constraint.sdc
+        └── src
+            └── tempsense
+                ├── counter.v             <--
+                ├── TEMP_ANALOG_hv.nl.v   <--
+                ├── TEMP_ANALOG_lv.nl.v   <--
+                ├── TEMP_AUTO_def.v       <--
+                └── tempsenseInst_error.v <--
+```    
+The default circuit’s physical design generation can be divided into three parts:
+
+ 1. Verilog generation     
+
+ 2. RTL-to-GDS flow (OpenROAD)     
+
+ 3. Post-layout verification (DRC and LVS)     
+
+### Verilog generation   
+
+Running make sky130hd_temp (temp for “temperature sensor”) executes the temp-sense-gen.py script from temp-sense-gen/tools/. This file takes the input specifications from test.json and outputs Verilog files containing the description of the circuit.
+
+The generator starts from a Verilog template of the temperature sensor circuit, located in temp-sense-gen/src/. The .v template files have lines marked with @@, which are replaced according to the specifications.  
+
+templetes -
+
+1.TEMP_ANALOG_hv.v      
+2.TEMP_ANALOG_lv.v     
+3.counter_generic.v     
+
+using this generated files-     
+
+1.TEMP_ANALOG_hv.nl.v    
+2.TEMP_ANALOG_lv.nl.v    
+3.counter.v    
+
+ #### what are hv lv file do-   
+ 
+   they are part of temperature sensor circuits.   
+   
+   #### HV FILE   
+
+![image](https://user-images.githubusercontent.com/110079729/199910810-4962f9ed-95e8-4857-ae3f-8acf9d9fe634.png)
+
+User Specs    
+
+Temperature sensing range: -20⁰C – 125⁰C    
+
+Frequency range of operation: 100Hz – 10MHz    
+
+* Inputs
+
+1. CLK_REF: System clock taken from input.
+
+2. RESET_COUNTERn: Input signal to reset the module initial state.
+
+3. SEL_CONV_TIME: Four bit input used to select how many times the 1 bit of the output DOUT is fractionated (0-16).
+
+* Outputs
+
+1. DOUT: The output voltage whose frequency is dependent on temperature.
+
+2. DONE: Validity signal for DOUT
+
+Theses are the verilog template files which are used for the creation of netlist verilog files.    
+
+We use an all-digital temperature sensor architecture, that relies on a new subthreshold oscillator (achieved using the auxiliary cell “Header Cell“) for realizing synthesizable thermal sensors. We choose frequency as the temperature dependent variable. So, we use a ring oscillators that is based on inverters only and stacked native IO devices for better line sensitivity.    
+Since the subthreshold current has an exponential dependency on the temperature, the frequency generated from the subthreshold ring oscillator is also dependent on temperature. Using this principle, we can sense the temperature by comparing the clock generated from a reference oscillator and the clock frequency from our proposed frequency generator.
