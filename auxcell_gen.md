@@ -2,8 +2,7 @@
 
 Phase Lock Loop (PLL) is a system that consists of three major parts; Phase Frequency Detector (PFD), Charge Pump and Loop Filter, and Voltage Controlled Oscillator (VCO). A PLL is highly preferred because it is a feedback system that compares the output frequency from the input frequency and can survive in a single chip. A PLL is normally used in well-timed clock generator, recovery of signal from noisy communication channel and high performance wireless with additional application in PLL’s parts
 
-![PLL](https://user-images.githubusercontent.com/110079763/206902456-795412e8-caba-44ee-948b-121798dc1cb1.png)
-
+![pll](https://user-images.githubusercontent.com/69398841/207780408-b0fe4793-8616-4c49-a0b3-bf3dd9f5cb5a.png)
 
 ## Charge Pump
 
