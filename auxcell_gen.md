@@ -1,4 +1,4 @@
-# PHASE LOCK LOOP (PLL) Generator
+# Phase Lock Loop (PLL) Generator
 
 Phase Lock Loop (PLL) is a system that consists of three major parts; Phase Frequency Detector (PFD), Charge Pump and Loop Filter, and Voltage Controlled Oscillator (VCO). A PLL is highly preferred because it is a feedback system that compares the output frequency from the input frequency and can survive in a single chip. A PLL is normally used in well-timed clock generator, recovery of signal from noisy communication channel and high performance wireless with additional application in PLL’s parts
 
@@ -25,10 +25,7 @@ loop filter according to two logical inputs.
 Aux Cells are part of big analog design which cannot be implemented with exisiting standerd cell in library. For different designs we have different aux cells. We have to manually create these.
 
 # AUX CELL GENERATION FOR - OpenFASoC(Fully Open-Source Autonomous SoC)
-
-
 ## GENERATING .lef, .gds for Aux cells
-
 **Discription** : In Open FASoC Flow to generate a automated Analog design, few auxilaury cells(.lef,.gds) are required to be created which cannot be implemented with existing library cells (like Header and SLC in temp_sence_gen). To generate these .lef and .gds files of AUX cells we use ALIGN.
 
 ### Reduired inputs from previous step of flow:
